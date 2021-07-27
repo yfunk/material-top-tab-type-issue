@@ -1,21 +1,34 @@
-import { StatusBar } from 'expo-status-bar';
-import React from 'react';
-import { StyleSheet, Text, View } from 'react-native';
+import { createMaterialTopTabNavigator } from "@react-navigation/material-top-tabs";
+import { createBottomTabNavigator } from "@react-navigation/bottom-tabs";
+
+type DummyParamList = {
+  home: undefined;
+  feed: undefined;
+};
+
+const Dummy = (props: any) => {
+  return null;
+};
+
+const MaterialTopTab = createMaterialTopTabNavigator<DummyParamList>();
+const BottomTab = createBottomTabNavigator<DummyParamList>();
+
+const MaterialTopTabTest = () => {
+  return (
+    <MaterialTopTab.Navigator tabBar={props => <Dummy {...props} />}>
+      <MaterialTopTab.Screen name="home" component={Dummy} options={{}} />
+    </MaterialTopTab.Navigator>
+  );
+};
+
+const BottomTabTest = () => {
+  return (
+    <BottomTab.Navigator tabBar={props => <Dummy {...props} />}>
+      <BottomTab.Screen name="home" component={Dummy} />
+    </BottomTab.Navigator>
+  );
+};
 
 export default function App() {
-  return (
-    <View style={styles.container}>
-      <Text>Open up App.tsx to start working on your app!</Text>
-      <StatusBar style="auto" />
-    </View>
-  );
+  return null;
 }
-
-const styles = StyleSheet.create({
-  container: {
-    flex: 1,
-    backgroundColor: '#fff',
-    alignItems: 'center',
-    justifyContent: 'center',
-  },
-});
